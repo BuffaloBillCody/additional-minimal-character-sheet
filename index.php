@@ -17,8 +17,8 @@ if ( ( $_ENV['ENV'] ?? '' ) === 'MAINTENANCE') {
     return;
 }
 
-// require POSTMARK_SECRET
-$dotenv->required( 'POSTMARK_SECRET' );
+// require Brevo API Key
+$dotenv->required( 'BREVO_API_KEY' );
 
 // set default debug level
 $debug_level = $_ENV['DEBUG'] ?? '';
