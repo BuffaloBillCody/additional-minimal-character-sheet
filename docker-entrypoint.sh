@@ -1,23 +1,28 @@
 #!/bin/bash
 set -e
 
-# Path inside container where app lives
-APP_DIR="/var/www/html/data"
-cd $APP_DIR
+# Move Files into /var/www/html/
+cp -r /src /var/www/html
 
-# Check if APP_DIR is empty (e.g., first container run)
-if [ -z "$(ls -A $APP_DIR)" ]; then
+# Run Setup
+composer install --no-dev --optimize-autoloader
+npm install
+npm run prod
+
+# Check if data directory is empty
+if [ -z "$(ls -A /var/www/html/data)" ]; then
+    echo "creating data directory..."
     mkdir -p /var/www/html/data
+    chown -R www-data:www-data $APP_DIR
+    chmod -R 775 $APP_DIR
+fi
+
+if [ -z "$(ls -A /var/www/html/.env)" ]; then
     echo "creating .env file..."
     touch .env
     echo "BREVO_API_KEY=" > .env
-    echo "Setting Up Database..."
-    php /var/www/html/migrations/001.php
-    php /var/www/html/migrations/002.php
-fi
+if 
 
-chown -R www-data:www-data $APP_DIR
-chmod -R 775 $APP_DIR
 echo "Docker entrypoint script finished"
 
 # Pass control to Apache
