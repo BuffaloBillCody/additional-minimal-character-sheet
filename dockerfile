@@ -10,14 +10,12 @@ RUN apt-get update && apt-get install -y unzip npm \
     && rm -rf /var/lib/apt/lists/* \
     && npm install \
     && npm run prod \
-    && mkdir data \
-    && php migrations/001.php \
-    && php migrations/002.php \
-    && chown -R www-data:www-data /var/www/html/data \
-    && chmod -R 775 /var/www/html/data
+
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENV BREVO_API_KEY="REPLACE ME"
 
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 EXPOSE 80/tcp
-
-
