@@ -16,6 +16,8 @@ if [ -z "$(ls -A $APP_DIR)" ]; then
     php /var/www/html/migrations/002.php
 fi
 
+chown -R www-data:www-data $APP_DIR
+chmod -R 775 $APP_DIR
 echo "Docker entrypoint script finished"
 
 # Pass control to Apache
