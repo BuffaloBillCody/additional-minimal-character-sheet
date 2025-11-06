@@ -61,7 +61,7 @@
             >
               <span class="sr-only">Move up</span>
               <i
-                class="fa-sharp fa-regular fa-arrow-up"
+                class="fa-solid fa-arrow-up"
                 role="presentation"
               ></i>
             </button>
@@ -76,7 +76,7 @@
             >
               <span class="sr-only">Move down</span>
               <i
-                class="fa-sharp fa-regular fa-arrow-down"
+                class="fa-solid fa-arrow-down"
                 role="presentation"
               ></i>
             </button>
@@ -90,7 +90,7 @@
               v-if="!readOnly"
             >
               <span class="sr-only">Delete attack</span>
-              <i class="fa-sharp fa-regular fa-xmark" role="presentation"></i>
+              <i class="fa-solid fa-xmark" role="presentation"></i>
             </button>
           </td>
 
@@ -132,7 +132,7 @@
             v-if="!readOnly && i > 0"
           >
             <span class="sr-only">Move up</span>
-            <i class="fa-sharp fa-regular fa-arrow-up" role="presentation"></i>
+            <i class="fa-solid fa-arrow-up" role="presentation"></i>
           </button>
 
           <button
@@ -144,7 +144,7 @@
           >
             <span class="sr-only">Move down</span>
             <i
-              class="fa-sharp fa-regular fa-arrow-down"
+              class="fa-solid fa-arrow-down"
               role="presentation"
             ></i>
           </button>
@@ -156,7 +156,7 @@
             @click="deleteAttack(a.id)"
           >
             <span class="sr-only">Delete attack</span>
-            <i class="fa-sharp fa-regular fa-xmark" role="presentation"></i>
+            <i class="fa-solid fa-xmark" role="presentation"></i>
           </button>
         </div>
 
@@ -207,7 +207,7 @@
         type="button"
       >
         <span class="sr-only">Add an attack</span>
-        <i class="fa-sharp fa-regular fa-plus" role="presentation"></i>
+        <i class="fa-solid fa-plus" role="presentation"></i>
       </button>
     </p>
   </details>

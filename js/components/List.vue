@@ -33,7 +33,7 @@
             v-if="!readOnly && i > 0"
           >
             <span class="sr-only">Move up</span>
-            <i class="fa-sharp fa-regular fa-arrow-up" role="presentation"></i>
+            <i class="fa-solid fa-arrow-up" role="presentation"></i>
           </button>
 
           <button
@@ -46,7 +46,7 @@
           >
             <span class="sr-only">Move down</span>
             <i
-              class="fa-sharp fa-regular fa-arrow-down"
+              class="fa-solid fa-arrow-down"
               role="presentation"
             ></i>
           </button>
@@ -60,7 +60,7 @@
             v-if="!readOnly"
           >
             <span class="sr-only">Delete</span>
-            <i class="fa-sharp fa-regular fa-xmark" role="presentation"></i>
+            <i class="fa-solid fa-xmark" role="presentation"></i>
           </button>
         </div>
       </li>
@@ -74,7 +74,7 @@
         type="button"
       >
         <span class="sr-only">Add list item</span>
-        <i class="fa-sharp fa-regular fa-plus" role="presentation"></i>
+        <i class="fa-solid fa-plus" role="presentation"></i>
       </button>
     </p>
   </div>

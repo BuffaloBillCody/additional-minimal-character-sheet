@@ -72,7 +72,7 @@
         <span class="centered label">Death saves</span>
 
         <div class="death-saves-row mb-xs">
-          <i class="mini-icon fa-sharp fa-regular fa-check"></i>
+          <i class="mini-icon fa-solid fa-check"></i>
 
           <input
             :checked="save"
@@ -85,7 +85,7 @@
         </div>
 
         <div class="death-saves-row">
-          <i class="mini-icon fa-sharp fa-regular fa-skull"></i>
+          <i class="mini-icon fa-solid fa-skull"></i>
           <input
             :checked="save"
             :disabled="readOnly"

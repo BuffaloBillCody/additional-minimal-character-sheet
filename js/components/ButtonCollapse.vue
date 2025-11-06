@@ -8,8 +8,8 @@
     <i
       :class="
         collapsed
-          ? 'fa-sharp fa-regular fa-folder-open'
-          : 'fa-sharp fa-regular fa-folder'
+          ? 'fa-solid fa-folder-open'
+          : 'fa-solid fa-folder'
       "
       role="presentation"
     ></i>
