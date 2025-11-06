@@ -2,12 +2,13 @@
 set -e
 
 # Move Files into /var/www/html/
-cp -r /src/* /var/www/html
+cp -r /src/. /var/www/html
 
 # Run Setup
 composer install --no-dev --optimize-autoloader
 npm install
 npm run prod
+
 
 # Check if data directory is empty
 if [ -z "$(ls -A /var/www/html/data)" ]; then
