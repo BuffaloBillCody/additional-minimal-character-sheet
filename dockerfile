@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y unzip npm \
     && composer install --no-dev --optimize-autoloader \
     && rm -rf /var/lib/apt/lists/* \
     && npm install \
-    && npm run prod \
+    && npm run prod
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
