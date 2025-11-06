@@ -13,8 +13,8 @@ npm run prod
 if [ -z "$(ls -A /var/www/html/data)" ]; then
     echo "creating data directory..."
     mkdir -p /var/www/html/data
-    chown -R www-data:www-data $APP_DIR
-    chmod -R 775 $APP_DIR
+    chown -R www-data:www-data /var/www/html/data
+    chmod -R 775 /var/www/html/data
 fi
 
 if [ -z "$(ls -A /var/www/html/.env)" ]; then
