@@ -15,7 +15,12 @@ if [ -z "$(ls -A /var/www/html/data)" ]; then
     mkdir -p /var/www/html/data
     chown -R www-data:www-data /var/www/html/data
     chmod -R 775 /var/www/html/data
+    php /var/www/html/migrations/001.php
+    php /var/www/html/migrations/002.php
 fi
+
+chown -R www-data:www-data /var/www/html/data
+chmod -R 775 /var/www/html/data
 
 if [ -z "$(ls -A /var/www/html/.env)" ]; then
     echo "creating .env file..."
