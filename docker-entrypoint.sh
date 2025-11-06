@@ -19,6 +19,7 @@ fi
 
 if [ -z "$(ls -A /var/www/html/.env)" ]; then
     echo "creating .env file..."
+    cd /var/www/html
     touch .env
     echo "BREVO_API_KEY=" > .env
 if 
