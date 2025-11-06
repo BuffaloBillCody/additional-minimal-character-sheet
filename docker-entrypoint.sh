@@ -27,7 +27,7 @@ if [ -z "$(ls -A /var/www/html/.env)" ]; then
     cd /var/www/html
     touch .env
     echo "BREVO_API_KEY=" > .env
-if 
+fi
 
 echo "Docker entrypoint script finished"
 
