@@ -11,3 +11,4 @@ vendor
 LICENSE.txt
 dockerfile
 .prettierrc
+dev-scripts
