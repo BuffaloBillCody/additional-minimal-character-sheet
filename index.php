@@ -6,19 +6,25 @@ require_once('./vendor/autoload.php');
 // bring in Fat Free
 $f3 = \Base::instance();
 
-// load phpdotenv
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// Check if .env file exists
+$dotenvPath = __DIR__ . '/.env';
+if (file_exists($dotenvPath)) {
+    // load phpdotenv
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+}
 
+//try and load API key from ENV
+$brevo_api_key = $_ENV['BREVO_API_KEY'] ?? getenv('BREVO_API_KEY') ?? null;
+if (!$brevo_api_key) {
+        throw new Exception('BREVO_API_KEY is not set');
+}
 
 if ( ( $_ENV['ENV'] ?? '' ) === 'MAINTENANCE') {
     error_log($_ENV['ENV']);
     echo \Template::instance()->render( 'templates/maintenance.html' );
     return;
 }
-
-// require Brevo API Key
-$dotenv->required( 'BREVO_API_KEY' );
 
 // set default debug level
 $debug_level = $_ENV['DEBUG'] ?? '';

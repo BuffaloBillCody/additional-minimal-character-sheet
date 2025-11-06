@@ -438,7 +438,7 @@ class Authentication
     public function email_token($user, $url_path, $subject, $message)
     {
         $env = $_ENV['ENV'] ?? null;
-        $brevo_api_key = $_ENV['BREVO_API_KEY'];  // rename your env variable
+        $brevo_api_key = $_ENV['BREVO_API_KEY'];
 
         // Setup Brevo API client
         $config = Configuration::getDefaultConfiguration()->setApiKey('api-key', $brevo_api_key);

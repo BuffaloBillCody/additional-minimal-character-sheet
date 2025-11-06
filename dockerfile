@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y unzip npm \
     && chown -R www-data:www-data /var/www/html/data \
     && chmod -R 775 /var/www/html/data
 
+ENV BREVO_API_KEY="REPLACE ME"
+
 EXPOSE 80/tcp
 
 
