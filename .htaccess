@@ -1,3 +1,31 @@
+<Files ".env">
+    Require all denied
+</Files>
+
+<Files "composer.json">
+    Require all denied
+</Files>
+
+<Files "composer.lock">
+    Require all denied
+</Files>
+
+<Files "docker-entrypoint.sh">
+    Require all denied
+</Files>
+
+<Files "mix-manifest.json">
+    Require all denied
+</Files>
+
+<Files "package-lock.json">
+    Require all denied
+</Files>
+
+<Files "package.json">
+    Require all denied
+</Files>
+
 # Enable rewrite engine and route requests to framework
 RewriteEngine On
 
