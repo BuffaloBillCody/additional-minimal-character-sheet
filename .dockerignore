@@ -5,3 +5,9 @@ README.md
 vendor
 .github
 .env
+.ddev
+.dockerignore
+.gitignore
+LICENSE.txt
+dockerfile
+.prettierrc
