@@ -12,13 +12,10 @@ if [ -z "$(ls -A $APP_DIR)" ]; then
     touch .env
     echo "BREVO_API_KEY=" > .env
     echo "Setting Up Database..."
-    php $APP_DIR/migrations/001.php
-    php $APP_DIR/migrations/002.php
+    php /var/www/html/migrations/001.php
+    php /var/www/html/migrations/002.php
 fi
 
-echo "Changing Database File Permissions..."
-chown -R www-data:www-data /var/www/html/data
-chmod -R 775 /var/www/html/data
 echo "Docker entrypoint script finished"
 
 # Pass control to Apache
