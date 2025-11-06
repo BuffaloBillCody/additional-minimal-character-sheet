@@ -9,13 +9,14 @@ composer install --no-dev --optimize-autoloader
 npm install
 npm run prod
 
-
 # Check if data directory is empty
 if [ -z "$(ls -A /var/www/html/data)" ]; then
     echo "creating data directory..."
     mkdir -p /var/www/html/data
     chown -R www-data:www-data /var/www/html/data
     chmod -R 775 /var/www/html/data
+    touch /var/www/html/data/.htaccess
+    echo "deny from all" > .htaccess
     php /var/www/html/migrations/001.php
     php /var/www/html/migrations/002.php
 fi
@@ -25,8 +26,7 @@ chmod -R 775 /var/www/html/data
 
 if [ -z "$(ls -A /var/www/html/.env)" ]; then
     echo "creating .env file..."
-    cd /var/www/html
-    touch .env
+    touch /var/www/html/.env
     echo "BREVO_API_KEY=" > .env
 fi
 
