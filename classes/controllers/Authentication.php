@@ -48,6 +48,27 @@ class Authentication
             return;
         }
 
+
+        // check token file exists
+        $tokenPath = 'data/invite_token.txt';
+        if (!file_exists($tokenPath)) {
+            $f3->set('error_message', 'Registration is temporarily unavailable. (Missing files)');
+            $this->set_csrf();
+            echo \Template::instance()->render('templates/register.html');
+            return;
+        }
+
+        // Get token
+        $storedHash = trim(file_get_contents($tokenPath));
+        $userToken = trim($f3->get('POST.invite_token'));
+
+        if (empty($userToken) || !password_verify($userToken, $storedHash)) {
+            $f3->set('error_message', 'Invalid or expired access token.');
+            $this->set_csrf();
+            echo \Template::instance()->render('templates/register.html');
+            return;
+        }
+
         // check passwords match
         if ($f3->get('POST.pw1') !== $f3->get('POST.pw2')) {
             $f3->set('error_message', 'Passwords do not match.');

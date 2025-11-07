@@ -9,16 +9,25 @@ composer install --no-dev --optimize-autoloader
 npm install
 npm run prod
 
+# Cron setup
+service cron start
+echo "0 2 * * MON root /usr/local/bin/token-gen.sh" >> /etc/crontab
+
 # Check if data directory is empty
 if [ -z "$(ls -A /var/www/html/data)" ]; then
-    echo "creating data directory..."
+    echo "setting up data directory..."
     mkdir -p /var/www/html/data
     chown -R www-data:www-data /var/www/html/data
     chmod -R 775 /var/www/html/data
+
+    echo "setting up database files..."
     touch /var/www/html/data/.htaccess
     echo "deny from all" > /var/www/html/data/.htaccess
     php /var/www/html/migrations/001.php
     php /var/www/html/migrations/002.php
+
+    echo "generating token"
+    token-gen.sh
 fi
 
 chown -R www-data:www-data /var/www/html/data

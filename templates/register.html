@@ -29,6 +29,11 @@
                             <label for="pw2" class="label block">Confirm Password</label>
                             <input type="password" id="pw2" name="pw2" class="field field-visible">
                         </p>
+
+                        <p>
+                        <label for="invite_token" class="label block">Access Token</label>
+                        <input type="text" id="invite_token" name="invite_token" class="field field-visible" required>
+                        </p>
     
                         <input type="hidden" name="phone">
                         <input type="hidden" name="csrf" value="{{ @CSRF }}">
