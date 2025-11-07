@@ -25,10 +25,11 @@ if [ -z "$(ls -A /var/www/html/data)" ]; then
     echo "deny from all" > /var/www/html/data/.htaccess
     php /var/www/html/migrations/001.php
     php /var/www/html/migrations/002.php
-
-    echo "generating token"
-    token-gen.sh
 fi
+
+# Token Should Generate on Startup Every Time
+echo "generating token"
+token-gen.sh
 
 chown -R www-data:www-data /var/www/html/data
 chmod -R 775 /var/www/html/data
