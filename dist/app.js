@@ -7316,14 +7316,13 @@ var render = function render() {
   }, [_c('div', {
     staticClass: "bio card mb-md"
   }, [_c('div', {
-    staticClass: "flex flex-wrap gap-lg"
-  }, [_c('div', [_c('label', {
+    staticClass: "bio-grid"
+  }, [_c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Name")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly
@@ -7336,13 +7335,12 @@ var render = function render() {
         return _vm.updateField('characterName', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Class")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -7356,12 +7354,14 @@ var render = function render() {
         return _vm.updateField('class', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
-    staticClass: "block mb-xs text-center"
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
+    staticClass: "block mb-xs"
   }, [_vm._v("Level")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible text-center",
+    staticClass: "field field-visible",
     staticStyle: {
-      "width": "100px"
+      "width": "70px"
     },
     attrs: {
       "type": "number",
@@ -7375,12 +7375,14 @@ var render = function render() {
         _vm.updateField('level', parseInt($event.target.value));
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
-    staticClass: "block mb-xs text-center"
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
+    staticClass: "block mb-xs"
   }, [_vm._v("XP")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible text-center",
+    staticClass: "field field-visible",
     staticStyle: {
-      "width": "100px"
+      "width": "70px"
     },
     attrs: {
       "type": "number",
@@ -7394,15 +7396,12 @@ var render = function render() {
         _vm.updateField('xp', parseInt($event.target.value));
       }
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "flex flex-wrap gap-lg mt-md"
-  }, [_c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Background")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -7416,13 +7415,12 @@ var render = function render() {
         return _vm.updateField('background', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Homeworld")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -7436,13 +7434,12 @@ var render = function render() {
         return _vm.updateField('homeworld', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Employer")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -7456,13 +7453,12 @@ var render = function render() {
         return _vm.updateField('employer', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Species")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -7513,7 +7509,7 @@ var render = function render() {
       }
     }), _vm._v(" "), _c('div', {
       staticClass: "modifier-box ml-sm flex-grow text-center bold"
-    }, [_vm._v("\n            " + _vm._s(_vm._f("signedNumString")((_vm$modifiers$i = _vm.modifiers[i]) === null || _vm$modifiers$i === void 0 ? void 0 : _vm$modifiers$i.val)) + "\n          ")])]);
+    }, [_vm._v("\n              " + _vm._s(_vm._f("signedNumString")((_vm$modifiers$i = _vm.modifiers[i]) === null || _vm$modifiers$i === void 0 ? void 0 : _vm$modifiers$i.val)) + "\n            ")])]);
   })], 2), _vm._v(" "), _c('div', {
     staticStyle: {
       "border-left": "1px solid rgba(0,0,0,0.1)",
@@ -8288,14 +8284,13 @@ var render = function render() {
   }, [_c('div', {
     staticClass: "bio card mb-md"
   }, [_c('div', {
-    staticClass: "flex flex-wrap gap-lg"
-  }, [_c('div', [_c('label', {
+    staticClass: "bio-grid"
+  }, [_c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Name")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly
@@ -8308,13 +8303,12 @@ var render = function render() {
         return _vm.updateField('characterName', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Class")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -8328,12 +8322,14 @@ var render = function render() {
         return _vm.updateField('class', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
-    staticClass: "block mb-xs text-center"
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
+    staticClass: "block mb-xs"
   }, [_vm._v("Level")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible text-center",
+    staticClass: "field field-visible",
     staticStyle: {
-      "width": "100px"
+      "width": "70px"
     },
     attrs: {
       "type": "number",
@@ -8347,12 +8343,14 @@ var render = function render() {
         _vm.updateField('level', parseInt($event.target.value));
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
-    staticClass: "block mb-xs text-center"
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
+    staticClass: "block mb-xs"
   }, [_vm._v("XP")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible text-center",
+    staticClass: "field field-visible",
     staticStyle: {
-      "width": "100px"
+      "width": "70px"
     },
     attrs: {
       "type": "number",
@@ -8366,15 +8364,12 @@ var render = function render() {
         _vm.updateField('xp', parseInt($event.target.value));
       }
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "flex flex-wrap gap-lg mt-md"
-  }, [_c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Homeland")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -8388,13 +8383,12 @@ var render = function render() {
         return _vm.updateField('homeland', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Occupation")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -8408,13 +8402,12 @@ var render = function render() {
         return _vm.updateField('occupation', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Species")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -8428,13 +8421,12 @@ var render = function render() {
         return _vm.updateField('species', $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c('div', [_c('label', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column"
+  }, [_c('label', {
     staticClass: "block mb-xs"
   }, [_vm._v("Goal")]), _vm._v(" "), _c('input', {
-    staticClass: "field field-visible",
-    staticStyle: {
-      "width": "100px"
-    },
+    staticClass: "field field-visible size-full",
     attrs: {
       "type": "text",
       "readonly": _vm.readOnly,
@@ -8485,7 +8477,7 @@ var render = function render() {
       }
     }), _vm._v(" "), _c('div', {
       staticClass: "modifier-box ml-sm flex-grow text-center bold"
-    }, [_vm._v("\n            " + _vm._s(_vm._f("signedNumString")((_vm$modifiers$i = _vm.modifiers[i]) === null || _vm$modifiers$i === void 0 ? void 0 : _vm$modifiers$i.val)) + "\n          ")])]);
+    }, [_vm._v("\n              " + _vm._s(_vm._f("signedNumString")((_vm$modifiers$i = _vm.modifiers[i]) === null || _vm$modifiers$i === void 0 ? void 0 : _vm$modifiers$i.val)) + "\n            ")])]);
   })], 2), _vm._v(" "), _c('div', {
     staticStyle: {
       "border-left": "1px solid rgba(0,0,0,0.1)",
@@ -8738,12 +8730,14 @@ var render = function render() {
   })])])]), _vm._v(" "), _c('h3', {
     staticClass: "mb-sm mt-lg"
   }, [_vm._v("Combat")]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-wrap gap-md"
+  }, [_c('div', {
     staticClass: "flex flex-column gap-sm"
   }, [_c('div', {
     staticClass: "flex align-items-center"
   }, [_c('label', {
     staticStyle: {
-      "width": "140px"
+      "width": "130px"
     }
   }, [_vm._v("Base Attack Bonus")]), _vm._v(" "), _c('input', {
     staticClass: "field field-visible text-center",
@@ -8766,7 +8760,7 @@ var render = function render() {
     staticClass: "flex align-items-center"
   }, [_c('label', {
     staticStyle: {
-      "width": "140px"
+      "width": "130px"
     }
   }, [_vm._v("Armor Class")]), _vm._v(" "), _c('input', {
     staticClass: "field field-visible text-center",
@@ -8785,11 +8779,13 @@ var render = function render() {
         _vm.updateField('armorClass', parseInt($event.target.value));
       }
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "flex align-items-center border-top pt-xs mt-xs"
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "flex flex-column gap-sm"
+  }, [_c('div', {
+    staticClass: "flex align-items-center"
   }, [_c('label', {
     staticStyle: {
-      "width": "140px"
+      "width": "100px"
     }
   }, [_vm._v("Melee Bonus")]), _vm._v(" "), _c('input', {
     staticClass: "field field-visible text-center",
@@ -8812,7 +8808,7 @@ var render = function render() {
     staticClass: "flex align-items-center"
   }, [_c('label', {
     staticStyle: {
-      "width": "140px"
+      "width": "100px"
     }
   }, [_vm._v("Ranged Bonus")]), _vm._v(" "), _c('input', {
     staticClass: "field field-visible text-center",
@@ -8835,7 +8831,7 @@ var render = function render() {
     staticClass: "flex align-items-center"
   }, [_c('label', {
     staticStyle: {
-      "width": "140px"
+      "width": "100px"
     }
   }, [_vm._v("Initiative")]), _vm._v(" "), _c('input', {
     staticClass: "field field-visible text-center",
@@ -8854,7 +8850,7 @@ var render = function render() {
         _vm.updateField('initiativeBonus', parseInt($event.target.value));
       }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  })])])])]), _vm._v(" "), _c('div', {
     staticStyle: {
       "border-left": "1px solid rgba(0,0,0,0.1)",
       "margin": "0 1rem"
@@ -8862,7 +8858,8 @@ var render = function render() {
   }), _vm._v(" "), _c('div', {
     staticClass: "flex-grow pl-md",
     staticStyle: {
-      "flex-basis": "45%"
+      "flex": "1.5",
+      "min-width": "250px"
     }
   }, [_c('h3', {
     staticClass: "mb-sm"
@@ -10899,7 +10896,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".flex-column[data-v-1a9e3d1a] {\n  display: flex;\n  flex-direction: column;\n}\n.grid-layout[data-v-1a9e3d1a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 1.5rem; /* Increase gap to prevent overlapping */\n}\n\n/* Add visual separation to card headers */\n.card h3[data-v-1a9e3d1a] {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding-bottom: 0.5rem;\n  margin-bottom: 1rem;\n  color: #444;\n}\n\n/* Ensure flex items in the bio section space nicely */\n.bio .flex-grow[data-v-1a9e3d1a] {\n  min-width: 150px;\n}\n.modifier-box[data-v-1a9e3d1a] {\n  background: rgba(0, 0, 0, 0.05);\n  border-radius: 4px;\n  padding: 4px;\n  min-width: 40px;\n}\n.skills-grid[data-v-1a9e3d1a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n  gap: 0.5rem 1.5rem;\n}\n.skills-grid .skill-item[data-v-1a9e3d1a] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 0.9rem;\n  gap: 0.5rem;\n}\n.skills-grid .skill-item label[data-v-1a9e3d1a] {\n  width: 100px;\n}\n.skills-grid .skill-item select[data-v-1a9e3d1a] {\n  width: 50px;\n  padding: 2px;\n  font-size: 1.1rem;\n}\n.weapon-table[data-v-1a9e3d1a], .armor-table[data-v-1a9e3d1a] {\n  width: 100%;\n  border-collapse: separate;\n  border-spacing: 0 4px;\n  min-width: 600px; /* Prevent text squishing */\n  /* Make inputs in these tables distinctly visible as boxes */\n}\n.weapon-table th[data-v-1a9e3d1a], .armor-table th[data-v-1a9e3d1a] {\n  font-size: 0.8rem;\n  color: #666;\n  padding: 4px 8px;\n  text-transform: uppercase;\n  border-bottom: 1px solid #ccc;\n}\n.weapon-table td[data-v-1a9e3d1a], .armor-table td[data-v-1a9e3d1a] {\n  padding: 2px 4px;\n}\n.weapon-table .field[data-v-1a9e3d1a], .armor-table .field[data-v-1a9e3d1a] {\n  border: 1px solid #ccc;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-radius: 4px;\n  padding: 6px;\n  box-sizing: border-box;\n  transition: border-color 0.2s;\n}\n.weapon-table .field[data-v-1a9e3d1a]:focus, .armor-table .field[data-v-1a9e3d1a]:focus {\n  border-color: #888;\n  background-color: #fff;\n}\n.table-wrapper[data-v-1a9e3d1a] {\n  overflow-x: auto;\n  margin-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.h-full[data-v-1a9e3d1a] {\n  height: 100%;\n}\n.size-full[data-v-1a9e3d1a] {\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".flex-column[data-v-1a9e3d1a] {\n  display: flex;\n  flex-direction: column;\n}\n.grid-layout[data-v-1a9e3d1a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 1.5rem; /* Increase gap to prevent overlapping */\n}\n\n/* Add visual separation to card headers */\n.card h3[data-v-1a9e3d1a] {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding-bottom: 0.5rem;\n  margin-bottom: 1rem;\n  color: #444;\n}\n\n/* Ensure flex items in the bio section space nicely */\n.bio .flex-grow[data-v-1a9e3d1a] {\n  min-width: 150px;\n}\n.modifier-box[data-v-1a9e3d1a] {\n  background: rgba(0, 0, 0, 0.05);\n  border-radius: 4px;\n  padding: 4px;\n  min-width: 40px;\n}\n.skills-grid[data-v-1a9e3d1a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n  gap: 0.5rem 1.5rem;\n}\n.skills-grid .skill-item[data-v-1a9e3d1a] {\n  display: flex;\n  justify-content: flex-start; /* Brings the select box back next to the text */\n  align-items: center;\n  font-size: 0.9rem;\n  gap: 0.5rem;\n}\n.skills-grid .skill-item label[data-v-1a9e3d1a] {\n  width: 120px; /* Increased from 100px to fit longest skill names */\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.skills-grid .skill-item select[data-v-1a9e3d1a] {\n  width: 50px;\n  padding: 2px;\n  font-size: 1.1rem;\n  flex-shrink: 0;\n}\n.weapon-table[data-v-1a9e3d1a], .armor-table[data-v-1a9e3d1a] {\n  width: 100%;\n  border-collapse: separate;\n  border-spacing: 0 4px;\n  min-width: 600px; /* Prevent text squishing */\n  /* Make inputs in these tables distinctly visible as boxes */\n}\n.weapon-table th[data-v-1a9e3d1a], .armor-table th[data-v-1a9e3d1a] {\n  font-size: 0.8rem;\n  color: #666;\n  padding: 4px 8px;\n  text-transform: uppercase;\n  border-bottom: 1px solid #ccc;\n}\n.weapon-table td[data-v-1a9e3d1a], .armor-table td[data-v-1a9e3d1a] {\n  padding: 2px 4px;\n}\n.weapon-table .field[data-v-1a9e3d1a], .armor-table .field[data-v-1a9e3d1a] {\n  border: 1px solid #ccc;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-radius: 4px;\n  padding: 6px;\n  box-sizing: border-box;\n  transition: border-color 0.2s;\n}\n.weapon-table .field[data-v-1a9e3d1a]:focus, .armor-table .field[data-v-1a9e3d1a]:focus {\n  border-color: #888;\n  background-color: #fff;\n}\n.table-wrapper[data-v-1a9e3d1a] {\n  overflow-x: auto;\n  margin-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.h-full[data-v-1a9e3d1a] {\n  height: 100%;\n}\n.size-full[data-v-1a9e3d1a] {\n  width: 100%;\n}\n.bio-grid[data-v-1a9e3d1a] {\n  display: grid;\n  /* Fixed pixel columns prevent stretching across the screen */\n  grid-template-columns: 140px 140px 140px 140px;\n  gap: 1rem 15px; /* Creates a clean ~15px horizontal gap */\n  justify-content: start; /* Locks the grid to the left side */\n}\n@media (max-width: 500px) {\n.bio-grid[data-v-1a9e3d1a] {\n    grid-template-columns: 1fr 1fr; /* Allows it to stack cleanly on phones */\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10923,7 +10920,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".flex-column[data-v-2137190a] {\n  display: flex;\n  flex-direction: column;\n}\n.grid-layout[data-v-2137190a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 1.5rem; /* Increase gap to prevent overlapping */\n}\n\n/* Add visual separation to card headers */\n.card h3[data-v-2137190a] {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding-bottom: 0.5rem;\n  margin-bottom: 1rem;\n  color: #444;\n}\n\n/* Ensure flex items in the bio section space nicely */\n.bio .flex-grow[data-v-2137190a] {\n  min-width: 150px;\n}\n.modifier-box[data-v-2137190a] {\n  background: rgba(0, 0, 0, 0.05);\n  border-radius: 4px;\n  padding: 4px;\n  min-width: 40px;\n}\n.skills-grid[data-v-2137190a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n  gap: 0.5rem 1.5rem;\n}\n.skills-grid .skill-item[data-v-2137190a] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  font-size: 0.9rem;\n  gap: 0.5rem;\n}\n.skills-grid .skill-item label[data-v-2137190a] {\n  width: 100px;\n}\n.skills-grid .skill-item select[data-v-2137190a] {\n  width: 50px;\n  padding: 2px;\n  font-size: 1.1rem;\n}\n.weapon-table[data-v-2137190a], .armor-table[data-v-2137190a] {\n  width: 100%;\n  border-collapse: separate;\n  border-spacing: 0 4px;\n  min-width: 600px; /* Prevent text squishing */\n  /* Make inputs in these tables distinctly visible as boxes */\n}\n.weapon-table th[data-v-2137190a], .armor-table th[data-v-2137190a] {\n  font-size: 0.8rem;\n  color: #666;\n  padding: 4px 8px;\n  text-transform: uppercase;\n  border-bottom: 1px solid #ccc;\n}\n.weapon-table td[data-v-2137190a], .armor-table td[data-v-2137190a] {\n  padding: 2px 4px;\n}\n.weapon-table .field[data-v-2137190a], .armor-table .field[data-v-2137190a] {\n  border: 1px solid #ccc;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-radius: 4px;\n  padding: 6px;\n  box-sizing: border-box;\n  transition: border-color 0.2s;\n}\n.weapon-table .field[data-v-2137190a]:focus, .armor-table .field[data-v-2137190a]:focus {\n  border-color: #888;\n  background-color: #fff;\n}\n.table-wrapper[data-v-2137190a] {\n  overflow-x: auto;\n  margin-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.h-full[data-v-2137190a] {\n  height: 100%;\n}\n.size-full[data-v-2137190a] {\n  width: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".flex-column[data-v-2137190a] {\n  display: flex;\n  flex-direction: column;\n}\n.grid-layout[data-v-2137190a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n  gap: 1.5rem; /* Increase gap to prevent overlapping */\n}\n\n/* Add visual separation to card headers */\n.card h3[data-v-2137190a] {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding-bottom: 0.5rem;\n  margin-bottom: 1rem;\n  color: #444;\n}\n\n/* Ensure flex items in the bio section space nicely */\n.bio .flex-grow[data-v-2137190a] {\n  min-width: 150px;\n}\n.modifier-box[data-v-2137190a] {\n  background: rgba(0, 0, 0, 0.05);\n  border-radius: 4px;\n  padding: 4px;\n  min-width: 40px;\n}\n.skills-grid[data-v-2137190a] {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));\n  gap: 0.5rem 1.5rem;\n}\n.skills-grid .skill-item[data-v-2137190a] {\n  display: flex;\n  justify-content: flex-start; /* Brings the select box back next to the text */\n  align-items: center;\n  font-size: 0.9rem;\n  gap: 0.5rem;\n}\n.skills-grid .skill-item label[data-v-2137190a] {\n  width: 120px; /* Increased from 100px to fit longest skill names */\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.skills-grid .skill-item select[data-v-2137190a] {\n  width: 50px;\n  padding: 2px;\n  font-size: 1.1rem;\n  flex-shrink: 0;\n}\n.weapon-table[data-v-2137190a], .armor-table[data-v-2137190a] {\n  width: 100%;\n  border-collapse: separate;\n  border-spacing: 0 4px;\n  min-width: 600px; /* Prevent text squishing */\n  /* Make inputs in these tables distinctly visible as boxes */\n}\n.weapon-table th[data-v-2137190a], .armor-table th[data-v-2137190a] {\n  font-size: 0.8rem;\n  color: #666;\n  padding: 4px 8px;\n  text-transform: uppercase;\n  border-bottom: 1px solid #ccc;\n}\n.weapon-table td[data-v-2137190a], .armor-table td[data-v-2137190a] {\n  padding: 2px 4px;\n}\n.weapon-table .field[data-v-2137190a], .armor-table .field[data-v-2137190a] {\n  border: 1px solid #ccc;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-radius: 4px;\n  padding: 6px;\n  box-sizing: border-box;\n  transition: border-color 0.2s;\n}\n.weapon-table .field[data-v-2137190a]:focus, .armor-table .field[data-v-2137190a]:focus {\n  border-color: #888;\n  background-color: #fff;\n}\n.table-wrapper[data-v-2137190a] {\n  overflow-x: auto;\n  margin-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.h-full[data-v-2137190a] {\n  height: 100%;\n}\n.size-full[data-v-2137190a] {\n  width: 100%;\n}\n.bio-grid[data-v-2137190a] {\n  display: grid;\n  /* Fixed pixel columns prevent stretching across the screen */\n  grid-template-columns: 140px 140px 140px 140px;\n  gap: 1rem 15px; /* Creates a clean ~15px horizontal gap */\n  justify-content: start; /* Locks the grid to the left side */\n}\n@media (max-width: 500px) {\n.bio-grid[data-v-2137190a] {\n    grid-template-columns: 1fr 1fr; /* Allows it to stack cleanly on phones */\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

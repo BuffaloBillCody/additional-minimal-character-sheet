@@ -2,45 +2,42 @@
   <div class="swn-layout">
     <div class="page" v-show="view === 'main'">
       <!-- Bio Section -->
-      <div class="bio card mb-md">
-        <div class="flex flex-wrap gap-lg">
-          <div>
+<div class="bio card mb-md">
+        <div class="bio-grid">
+          <div class="flex flex-column">
             <label class="block mb-xs">Name</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="characterName" @input="updateField('characterName', $event.target.value)" :readonly="readOnly">
+            <input type="text" class="field field-visible size-full" :value="characterName" @input="updateField('characterName', $event.target.value)" :readonly="readOnly">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Class</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="classInfo" @input="updateField('class', $event.target.value)" :readonly="readOnly" placeholder="Class">
+            <input type="text" class="field field-visible size-full" :value="classInfo" @input="updateField('class', $event.target.value)" :readonly="readOnly" placeholder="Class">
           </div>
-          <div>
-            <label class="block mb-xs text-center">Level</label>
-            <input type="number" class="field field-visible text-center" style="width: 100px;" :value="level" @input="updateField('level', parseInt($event.target.value))" :readonly="readOnly">
+          <div class="flex flex-column">
+            <label class="block mb-xs">Level</label>
+            <input type="number" class="field field-visible" style="width: 70px;" :value="level" @input="updateField('level', parseInt($event.target.value))" :readonly="readOnly">
           </div>
-          <div>
-            <label class="block mb-xs text-center">XP</label>
-            <input type="number" class="field field-visible text-center" style="width: 100px;" :value="xp" @input="updateField('xp', parseInt($event.target.value))" :readonly="readOnly">
+          <div class="flex flex-column">
+            <label class="block mb-xs">XP</label>
+            <input type="number" class="field field-visible" style="width: 70px;" :value="xp" @input="updateField('xp', parseInt($event.target.value))" :readonly="readOnly">
           </div>
-        </div>
-        <div class="flex flex-wrap gap-lg mt-md">
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Background</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="background" @input="updateField('background', $event.target.value)" :readonly="readOnly" placeholder="Background">
+            <input type="text" class="field field-visible size-full" :value="background" @input="updateField('background', $event.target.value)" :readonly="readOnly" placeholder="Background">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Homeworld</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="homeworld" @input="updateField('homeworld', $event.target.value)" :readonly="readOnly" placeholder="Homeworld">
+            <input type="text" class="field field-visible size-full" :value="homeworld" @input="updateField('homeworld', $event.target.value)" :readonly="readOnly" placeholder="Homeworld">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Employer</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="employer" @input="updateField('employer', $event.target.value)" :readonly="readOnly" placeholder="Employer">
+            <input type="text" class="field field-visible size-full" :value="employer" @input="updateField('employer', $event.target.value)" :readonly="readOnly" placeholder="Employer">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Species</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="species" @input="updateField('species', $event.target.value)" :readonly="readOnly" placeholder="Species">
+            <input type="text" class="field field-visible size-full" :value="species" @input="updateField('species', $event.target.value)" :readonly="readOnly" placeholder="Species">
           </div>
         </div>
       </div>
-
       <!-- Core Stats -->
       <div class="card mb-md flex flex-wrap">
         <!-- Attributes -->
@@ -342,22 +339,26 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.5rem 1.5rem;
-  
+
   .skill-item {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Brings the select box back next to the text */
     align-items: center;
     font-size: 0.9rem;
     gap: 0.5rem;
-    
+
     label {
-      width: 100px;
+      width: 120px; /* Increased from 100px to fit longest skill names */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    
+
     select {
       width: 50px;
       padding: 2px;
       font-size: 1.1rem;
+      flex-shrink: 0;
     }
   }
 }
@@ -404,4 +405,19 @@ export default {
 
 .h-full { height: 100%; }
 .size-full { width: 100%; }
+
+.bio-grid {
+  display: grid;
+  /* Fixed pixel columns prevent stretching across the screen */
+  grid-template-columns: 140px 140px 140px 140px;
+  gap: 1rem 15px; /* Creates a clean ~15px horizontal gap */
+  justify-content: start; /* Locks the grid to the left side */
+}
+
+@media (max-width: 500px) {
+  .bio-grid {
+    grid-template-columns: 1fr 1fr; /* Allows it to stack cleanly on phones */
+  }
+}
+
 </style>

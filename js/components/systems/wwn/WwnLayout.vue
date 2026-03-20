@@ -2,41 +2,39 @@
   <div class="wwn-layout">
     <div class="page" v-show="view === 'main'">
       <!-- Bio Section -->
-      <div class="bio card mb-md">
-        <div class="flex flex-wrap gap-lg">
-          <div>
+<div class="bio card mb-md">
+        <div class="bio-grid">
+          <div class="flex flex-column">
             <label class="block mb-xs">Name</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="characterName" @input="updateField('characterName', $event.target.value)" :readonly="readOnly">
+            <input type="text" class="field field-visible size-full" :value="characterName" @input="updateField('characterName', $event.target.value)" :readonly="readOnly">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Class</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="classInfo" @input="updateField('class', $event.target.value)" :readonly="readOnly" placeholder="Class">
+            <input type="text" class="field field-visible size-full" :value="classInfo" @input="updateField('class', $event.target.value)" :readonly="readOnly" placeholder="Class">
           </div>
-          <div>
-            <label class="block mb-xs text-center">Level</label>
-            <input type="number" class="field field-visible text-center" style="width: 100px;" :value="level" @input="updateField('level', parseInt($event.target.value))" :readonly="readOnly">
+          <div class="flex flex-column">
+            <label class="block mb-xs">Level</label>
+            <input type="number" class="field field-visible" style="width: 70px;" :value="level" @input="updateField('level', parseInt($event.target.value))" :readonly="readOnly">
           </div>
-          <div>
-            <label class="block mb-xs text-center">XP</label>
-            <input type="number" class="field field-visible text-center" style="width: 100px;" :value="xp" @input="updateField('xp', parseInt($event.target.value))" :readonly="readOnly">
+          <div class="flex flex-column">
+            <label class="block mb-xs">XP</label>
+            <input type="number" class="field field-visible" style="width: 70px;" :value="xp" @input="updateField('xp', parseInt($event.target.value))" :readonly="readOnly">
           </div>
-        </div>
-        <div class="flex flex-wrap gap-lg mt-md">
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Homeland</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="homeland" @input="updateField('homeland', $event.target.value)" :readonly="readOnly" placeholder="Homeland">
+            <input type="text" class="field field-visible size-full" :value="homeland" @input="updateField('homeland', $event.target.value)" :readonly="readOnly" placeholder="Homeland">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Occupation</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="occupation" @input="updateField('occupation', $event.target.value)" :readonly="readOnly" placeholder="Occupation">
+            <input type="text" class="field field-visible size-full" :value="occupation" @input="updateField('occupation', $event.target.value)" :readonly="readOnly" placeholder="Occupation">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Species</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="species" @input="updateField('species', $event.target.value)" :readonly="readOnly" placeholder="Species">
+            <input type="text" class="field field-visible size-full" :value="species" @input="updateField('species', $event.target.value)" :readonly="readOnly" placeholder="Species">
           </div>
-          <div>
+          <div class="flex flex-column">
             <label class="block mb-xs">Goal</label>
-            <input type="text" class="field field-visible" style="width: 100px;" :value="goal" @input="updateField('goal', $event.target.value)" :readonly="readOnly" placeholder="Goal">
+            <input type="text" class="field field-visible size-full" :value="goal" @input="updateField('goal', $event.target.value)" :readonly="readOnly" placeholder="Goal">
           </div>
         </div>
       </div>
@@ -114,36 +112,42 @@
             </div>
           </div>
 
-          <h3 class="mb-sm mt-lg">Combat</h3>
-          <div class="flex flex-column gap-sm">
-            <div class="flex align-items-center">
-              <label style="width: 140px;">Base Attack Bonus</label>
-              <input type="number" class="field field-visible text-center" style="width: 60px;" :value="baseAttackBonus" @input="updateField('baseAttackBonus', parseInt($event.target.value))" :readonly="readOnly">
+<h3 class="mb-sm mt-lg">Combat</h3>
+          <div class="flex flex-wrap gap-md">
+            <div class="flex flex-column gap-sm">
+              <div class="flex align-items-center">
+                <label style="width: 130px;">Base Attack Bonus</label>
+                <input type="number" class="field field-visible text-center" style="width: 60px;" :value="baseAttackBonus" @input="updateField('baseAttackBonus', parseInt($event.target.value))" :readonly="readOnly">
+              </div>
+              <div class="flex align-items-center">
+                <label style="width: 130px;">Armor Class</label>
+                <input type="number" class="field field-visible text-center" style="width: 60px;" :value="armorClass" @input="updateField('armorClass', parseInt($event.target.value))" :readonly="readOnly">
+              </div>
             </div>
-            <div class="flex align-items-center">
-              <label style="width: 140px;">Armor Class</label>
-              <input type="number" class="field field-visible text-center" style="width: 60px;" :value="armorClass" @input="updateField('armorClass', parseInt($event.target.value))" :readonly="readOnly">
-            </div>
-            <div class="flex align-items-center border-top pt-xs mt-xs">
-              <label style="width: 140px;">Melee Bonus</label>
-              <input type="number" class="field field-visible text-center" style="width: 60px;" :value="meleeAttackBonus" @input="updateField('meleeAttackBonus', parseInt($event.target.value))" :readonly="readOnly">
-            </div>
-            <div class="flex align-items-center">
-              <label style="width: 140px;">Ranged Bonus</label>
-              <input type="number" class="field field-visible text-center" style="width: 60px;" :value="rangedAttackBonus" @input="updateField('rangedAttackBonus', parseInt($event.target.value))" :readonly="readOnly">
-            </div>
-            <div class="flex align-items-center">
-              <label style="width: 140px;">Initiative</label>
-              <input type="number" class="field field-visible text-center" style="width: 60px;" :value="initiativeBonus" @input="updateField('initiativeBonus', parseInt($event.target.value))" :readonly="readOnly">
+
+            <div class="flex flex-column gap-sm">
+              <div class="flex align-items-center">
+                <label style="width: 100px;">Melee Bonus</label>
+                <input type="number" class="field field-visible text-center" style="width: 60px;" :value="meleeAttackBonus" @input="updateField('meleeAttackBonus', parseInt($event.target.value))" :readonly="readOnly">
+              </div>
+              <div class="flex align-items-center">
+                <label style="width: 100px;">Ranged Bonus</label>
+                <input type="number" class="field field-visible text-center" style="width: 60px;" :value="rangedAttackBonus" @input="updateField('rangedAttackBonus', parseInt($event.target.value))" :readonly="readOnly">
+              </div>
+              <div class="flex align-items-center">
+                <label style="width: 100px;">Initiative</label>
+                <input type="number" class="field field-visible text-center" style="width: 60px;" :value="initiativeBonus" @input="updateField('initiativeBonus', parseInt($event.target.value))" :readonly="readOnly">
+              </div>
             </div>
           </div>
         </div>
+
 
         <!-- Vertical Separator -->
         <div style="border-left: 1px solid rgba(0,0,0,0.1); margin: 0 1rem;"></div>
 
         <!-- Skills -->
-        <div class="flex-grow pl-md" style="flex-basis: 45%;">
+        <div class="flex-grow pl-md" style="flex: 1.5; min-width: 250px;">
           <h3 class="mb-sm">Skills</h3>
           <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr); gap: 0.25rem 1rem;">
             <div v-for="(skill, i) in skills" :key="skill.name" class="skill-item">
@@ -364,22 +368,26 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 0.5rem 1.5rem;
-  
+
   .skill-item {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Brings the select box back next to the text */
     align-items: center;
     font-size: 0.9rem;
     gap: 0.5rem;
 
     label {
-      width: 100px;
+      width: 120px; /* Increased from 100px to fit longest skill names */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     select {
       width: 50px;
       padding: 2px;
       font-size: 1.1rem;
+      flex-shrink: 0;
     }
   }
 }
@@ -426,4 +434,19 @@ export default {
 
 .h-full { height: 100%; }
 .size-full { width: 100%; }
+
+.bio-grid {
+  display: grid;
+  /* Fixed pixel columns prevent stretching across the screen */
+  grid-template-columns: 140px 140px 140px 140px;
+  gap: 1rem 15px; /* Creates a clean ~15px horizontal gap */
+  justify-content: start; /* Locks the grid to the left side */
+}
+
+@media (max-width: 500px) {
+  .bio-grid {
+    grid-template-columns: 1fr 1fr; /* Allows it to stack cleanly on phones */
+  }
+}
+
 </style>
