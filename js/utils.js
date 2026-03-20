@@ -59,3 +59,16 @@ export const signedNumString = (num) => {
   if (num > 0) return `+${num}`;
   return num.toString();
 };
+
+export const getDnd5eModifier = (score) => {
+  return Math.floor(parseInt(score) / 2 - 5);
+};
+
+export const getSwnModifier = (score) => {
+  score = parseInt(score);
+  if (score >= 18) return 2;
+  if (score >= 14) return 1;
+  if (score >= 8) return 0;
+  if (score >= 4) return -1;
+  return -2;
+};

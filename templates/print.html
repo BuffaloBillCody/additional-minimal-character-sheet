@@ -41,6 +41,7 @@
       <script>
         window.sheet = "{{ @sheet | raw }}";
         window.characterName = "{{ @character_name | raw }}";
+        window.system = "{{ @system | raw }}";
         window.is_2024 = {{ @is_2024 | raw }};
         document.title = `${window.characterName} - Minimal character sheet`;
       </script>

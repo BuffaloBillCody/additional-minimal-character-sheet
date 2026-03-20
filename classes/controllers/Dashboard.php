@@ -69,10 +69,12 @@ class Dashboard {
         }
         
         $character_name = $sheet_data['name'];
-        $is_2024 = $sheet_data['is_2024'];
+        $system = $sheet_data['system'];
+        $is_2024 = ($system === 'dnd5e_2024');
         $sheet_data = addslashes( json_encode( $sheet_data ) );
         $f3->set( 'sheet', $sheet_data );
         $f3->set( 'character_name', addslashes( $character_name ) );
+        $f3->set( 'system', $system );
         $f3->set( 'is_2024', $is_2024 ? 'true' : 'false' );
         $f3->set( 'sheet_slug', $slug );
         $f3->set( 'app', true );
@@ -113,9 +115,12 @@ class Dashboard {
         if( $f3->get( 'SERVER.REQUEST_METHOD' ) === 'POST' ) {
             $name = $f3->get( 'POST.sheet_name' );
             $email = $f3->get( 'SESSION.email' );
-            $is_2024 = $f3->get( 'POST.is_2024' ) === '1';
+            $system = $f3->get( 'POST.system' );
+            if (!$system) {
+                $system = $f3->get( 'POST.is_2024' ) === '1' ? 'dnd5e_2024' : 'dnd5e_2014';
+            }
             $sheet = new Sheet( $f3->get( 'DB' ) );
-            $sheet->create_sheet( $name, $email, $is_2024 );
+            $sheet->create_sheet( $name, $email, $system );
             $f3->reroute( '/dashboard' );
         } else {
             $this->auth->set_csrf();
@@ -242,10 +247,12 @@ class Dashboard {
         }
         
         $character_name = $sheet_data['name'];
-        $is_2024 = $sheet_data['is_2024'];
+        $system = $sheet_data['system'];
+        $is_2024 = ($system === 'dnd5e_2024');
         $sheet_data = addslashes( json_encode( $sheet_data ) );
         $f3->set( 'sheet', $sheet_data );
         $f3->set( 'character_name', addslashes( $character_name ) );
+        $f3->set( 'system', $system );
         $f3->set( 'is_2024', $is_2024 ? 'true' : 'false' );
         $f3->set( 'sheet_slug', $slug );
         $f3->set( 'print', true );

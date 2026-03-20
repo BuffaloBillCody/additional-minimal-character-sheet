@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import levelData from './level-data';
+import { getSystemDefaultState } from './systems';
+import { getDnd5eModifier, getSwnModifier } from './utils';
 
 Vue.use(Vuex);
 
@@ -8,215 +9,23 @@ export default new Vuex.Store({
   state: {
     id: '',
     slug: '',
+    system: 'dnd5e_2014',
     is_2024: false,
     readOnly: false,
-    levelData: levelData,
-    level: 1,
     characterName: '',
-    race: '',
-    background: '',
-    className: '',
-    xp: 0,
-    alignment: '',
-    hp: 0,
-    maxHp: 0,
-    tempHp: 0,
-    hitDie: '1d8',
-    totalHitDie: 1,
-    ac: 10,
-    speed: 25,
-    initiative: 0,
-    proficiencyOverride: null,
-    inspiration: false,
-    shortRests: 0,
-    deathSaves: {
-      successes: [false, false, false],
-      failures: [false, false, false],
-    },
-    conditions: '',
-    concentration: '',
-    abilities: [
-      { name: 'STR', score: 10 },
-      { name: 'DEX', score: 10 },
-      { name: 'CON', score: 10 },
-      { name: 'INT', score: 10 },
-      { name: 'WIS', score: 10 },
-      { name: 'CHA', score: 10 },
-    ],
-    savingThrows: [
-      { name: 'STR', proficient: false },
-      { name: 'DEX', proficient: false },
-      { name: 'CON', proficient: false },
-      { name: 'INT', proficient: false },
-      { name: 'WIS', proficient: false },
-      { name: 'CHA', proficient: false },
-    ],
-    skills: [
-      {
-        name: 'Acrobatics',
-        ability: 'DEX',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Animal Handling',
-        ability: 'WIS',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Arcana',
-        ability: 'INT',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Athletics',
-        ability: 'STR',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Deception',
-        ability: 'CHA',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'History',
-        ability: 'INT',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Insight',
-        ability: 'WIS',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Intimidation',
-        ability: 'CHA',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Investigation',
-        ability: 'INT',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Medicine',
-        ability: 'WIS',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Nature',
-        ability: 'INT',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Perception',
-        ability: 'WIS',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Performance',
-        ability: 'CHA',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Persuasion',
-        ability: 'CHA',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Religion',
-        ability: 'INT',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Sleight of Hand',
-        ability: 'DEX',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Stealth',
-        ability: 'DEX',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-      {
-        name: 'Survival',
-        ability: 'WIS',
-        proficient: false,
-        doubleProficient: false,
-        modifierOverride: null,
-      },
-    ],
-    attacks: [],
-    coins: [
-      { name: 'cp', amount: 0 },
-      { name: 'sp', amount: 0 },
-      { name: 'ep', amount: 0 },
-      { name: 'gp', amount: 0 },
-      { name: 'pp', amount: 0 },
-    ],
-    equipmentText: {},
-    proficienciesText: {},
-    featuresText: {},
-    personalityText: {},
-    backstoryText: {},
-    treasureText: {},
-    organizationsText: {},
-    notesText: {},
-    spClass: '',
-    spAbility: 'WIS',
-    spSave: '',
-    spAttack: '',
-    cantripsList: [],
-    lvl1Spells: { slots: 0, expended: 0, spells: [] },
-    lvl2Spells: { slots: 0, expended: 0, spells: [] },
-    lvl3Spells: { slots: 0, expended: 0, spells: [] },
-    lvl4Spells: { slots: 0, expended: 0, spells: [] },
-    lvl5Spells: { slots: 0, expended: 0, spells: [] },
-    lvl6Spells: { slots: 0, expended: 0, spells: [] },
-    lvl7Spells: { slots: 0, expended: 0, spells: [] },
-    lvl8Spells: { slots: 0, expended: 0, spells: [] },
-    lvl9Spells: { slots: 0, expended: 0, spells: [] },
   },
 
   getters: {
     modifiers(state) {
-      return state.abilities.map((a) => {
+      const isSwnWwn = state.system === 'swn' || state.system === 'wwn';
+      const abilities = isSwnWwn ? state.attributes : state.abilities;
+      const getMod = isSwnWwn ? getSwnModifier : getDnd5eModifier;
+
+      if (!abilities) return [];
+      return abilities.map((a) => {
         return {
           ability: a.name,
-          val: Math.floor(parseInt(a.score) / 2 - 5),
+          val: getMod(a.score),
         };
       });
     },
@@ -225,34 +34,27 @@ export default new Vuex.Store({
       if (state.proficiencyOverride !== null && state.proficiencyOverride !== undefined) {
         return state.proficiencyOverride;
       }
+      if (!state.levelData || !state.level) return 2;
       var level = state.level;
       var row = state.levelData.find((data) => level === data.lvl);
       if (!row) return 2;
       return row.proficiency;
     },
-
-    /* getLevelByXp(state) {
-            return xp => {
-                var row = state.levelData.find((data, i) => {
-                    if(i + 1 === state.levelData.length) return true;
-                    if(xp > data.xp && xp < state.levelData[i+1].xp) return true;
-                });
-
-                if(!row) return 1;
-                return row.lvl;
-            };
-        },
-
-        getXpByLevel(state) {} */
   },
 
   mutations: {
     replaceState(state, payload) {
       if (!payload.state) return;
       if (typeof payload.state !== 'object') return;
+      // Clear existing state keys that might not be in the new state
+      Object.keys(state).forEach(key => {
+        if (!['id', 'slug', 'system', 'is_2024', 'readOnly', 'characterName'].includes(key)) {
+          Vue.delete(state, key);
+        }
+      });
       for (let prop in payload.state) {
         if (!payload.state.hasOwnProperty(prop)) continue;
-        state[prop] = payload.state[prop];
+        Vue.set(state, prop, payload.state[prop]);
       }
     },
 
@@ -385,6 +187,18 @@ export default new Vuex.Store({
       state.attacks = state.attacks.filter((a) => a.id !== payload.id);
     },
 
+    addListItem(state, payload) {
+      if (state[payload.list]) {
+        state[payload.list].push(payload.item);
+      }
+    },
+
+    removeListItem(state, payload) {
+      if (state[payload.list]) {
+        state[payload.list].splice(payload.index, 1);
+      }
+    },
+
     sortAttacks(state, payload) {
       var id = payload.id;
       var direction = payload.direction;
@@ -421,6 +235,17 @@ export default new Vuex.Store({
     updateTextField(state, payload) {
       if (!state.hasOwnProperty(payload.field)) return;
       state[payload.field] = payload.val;
+    },
+
+    updateField(state, payload) {
+      // General purpose updater for any top-level field
+      Vue.set(state, payload.field, payload.val);
+    },
+
+    updateNestedField(state, payload) {
+      // For arrays/objects
+      if (!state[payload.field]) return;
+      Vue.set(state[payload.field], payload.key, payload.val);
     },
 
     addToListField(state, payload) {
@@ -557,62 +382,72 @@ export default new Vuex.Store({
       });
     },
 
-    initializeState({ commit, state: storeState }, payload) {
+    initializeState({ commit }, payload) {
       var sheet = JSON.parse(payload.sheet);
-      // Start with a deep copy of the store's default state
-      var state = JSON.parse(JSON.stringify(storeState));
+      
+      // Determine system
+      var system = window.system || sheet.system || (sheet.is_2024 ? 'dnd5e_2024' : 'dnd5e_2014');
+      
+      // Start with system default state
+      var defaultState = JSON.parse(JSON.stringify(getSystemDefaultState(system)));
+      var state = Object.assign({}, defaultState);
 
       if (sheet.data) {
         // merge sheet data on top of defaults
-        state = Object.assign({}, state, JSON.parse(sheet.data));
+        try {
+          var sheetData = typeof sheet.data === 'string' ? JSON.parse(sheet.data) : sheet.data;
+          state = Object.assign({}, state, sheetData);
+        } catch (e) {
+          console.error("Failed to parse sheet data", e);
+        }
       }
 
-      // default initiative to dex modifier
-      if (!state.initiative) {
-        const dex = state.abilities.find((ability) => ability.name === 'DEX');
-        state.initiative = Math.floor(parseInt(dex.score) / 2 - 5);
-      }
-
-      // ensure existing attacks have weaponNotes field
-      if (state.attacks && state.attacks.length > 0) {
-        state.attacks.forEach((attack) => {
-          if (!attack.hasOwnProperty('weaponNotes')) {
-            attack.weaponNotes = '';
+      // System specific initialization
+      if (system.startsWith('dnd5e')) {
+          // default initiative to dex modifier
+          if (!state.initiative && state.abilities) {
+            const dex = state.abilities.find((ability) => ability.name === 'DEX');
+            if (dex) {
+                state.initiative = Math.floor(parseInt(dex.score) / 2 - 5);
+            }
           }
-        });
-      }
 
-      // ensure cantripsList has collapsed boolean
-      if (state.cantripsList && state.cantripsList.length > 0) {
-        state.cantripsList.forEach((cantrip) => {
-          if (!cantrip.hasOwnProperty('collapsed')) {
-            cantrip.collapsed = false;
+          // ensure existing attacks have weaponNotes field
+          if (state.attacks && state.attacks.length > 0) {
+            state.attacks.forEach((attack) => {
+              if (!attack.hasOwnProperty('weaponNotes')) {
+                attack.weaponNotes = '';
+              }
+            });
           }
-        });
-      }
 
-      // ensure spell lists have collapsed boolean
-      if (state.lvl1Spells && state.lvl1Spells.spells.length > 0) {
-        state.lvl1Spells.spells.forEach((spell) => {
-          if (!spell.hasOwnProperty('collapsed')) {
-            spell.collapsed = false;
+          // ensure cantripsList has collapsed boolean
+          if (state.cantripsList && state.cantripsList.length > 0) {
+            state.cantripsList.forEach((cantrip) => {
+              if (!cantrip.hasOwnProperty('collapsed')) {
+                cantrip.collapsed = false;
+              }
+            });
           }
-        });
+
+          // ensure spell lists have collapsed boolean
+          if (state.lvl1Spells && state.lvl1Spells.spells.length > 0) {
+            state.lvl1Spells.spells.forEach((spell) => {
+              if (!spell.hasOwnProperty('collapsed')) {
+                spell.collapsed = false;
+              }
+            });
+          }
       }
 
       state.id = sheet.id;
       state.slug = sheet.slug;
+      state.system = system;
+      state.is_2024 = (system === 'dnd5e_2024');
 
       // Use window.characterName if state.characterName is missing or empty
       if (!state.characterName && typeof window.characterName !== 'undefined') {
         state.characterName = window.characterName;
-      }
-
-      // Use window.is_2024 if available, otherwise use sheet.is_2024
-      if (typeof window.is_2024 !== 'undefined') {
-        state.is_2024 = window.is_2024;
-      } else if (sheet.is_2024 !== undefined) {
-        state.is_2024 = sheet.is_2024;
       }
 
       state.readOnly = sheet.is_public && sheet.email === null;
@@ -620,27 +455,39 @@ export default new Vuex.Store({
       commit('replaceState', { state });
     },
 
-    updateState({ commit, state: storeState }, payload) {
+    updateState({ commit }, payload) {
       var sheet = payload.sheet;
-      // Start with a deep copy of the store's default state
-      var state = JSON.parse(JSON.stringify(storeState));
+      var system = sheet.system || (sheet.is_2024 ? 'dnd5e_2024' : 'dnd5e_2014');
+      
+      // Start with system default state
+      var defaultState = JSON.parse(JSON.stringify(getSystemDefaultState(system)));
+      var state = Object.assign({}, defaultState);
 
       if (sheet.data) {
         // merge sheet data on top of defaults
-        state = Object.assign({}, state, JSON.parse(sheet.data));
+        try {
+          var sheetData = typeof sheet.data === 'string' ? JSON.parse(sheet.data) : sheet.data;
+          state = Object.assign({}, state, sheetData);
+        } catch (e) {
+          console.error("Failed to parse sheet data", e);
+        }
       }
 
-      // ensure existing attacks have weaponNotes field
-      if (state.attacks && state.attacks.length > 0) {
-        state.attacks.forEach((attack) => {
-          if (!attack.hasOwnProperty('weaponNotes')) {
-            attack.weaponNotes = '';
+      // System specific initialization (D&D 5e)
+      if (system.startsWith('dnd5e')) {
+          if (state.attacks && state.attacks.length > 0) {
+            state.attacks.forEach((attack) => {
+              if (!attack.hasOwnProperty('weaponNotes')) {
+                attack.weaponNotes = '';
+              }
+            });
           }
-        });
       }
 
       state.id = sheet.id;
       state.characterName = sheet.name;
+      state.system = system;
+      state.is_2024 = (system === 'dnd5e_2024');
       state.readOnly = sheet.is_public && sheet.email === null;
 
       commit('replaceState', { state });

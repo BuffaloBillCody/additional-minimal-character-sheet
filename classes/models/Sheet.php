@@ -9,7 +9,7 @@ class Sheet extends \DB\SQL\Mapper {
         parent::__construct( $db, 'sheet' );
     }
 
-    public function create_sheet( $name, $email, $is_2024 = true ) {
+    public function create_sheet( $name, $email, $system = 'dnd5e_2014' ) {
         do {
             $slug = $this->random_slug();
         } while ( $this->get_sheet_by_slug( $slug ) );
@@ -19,7 +19,8 @@ class Sheet extends \DB\SQL\Mapper {
         $this->data = '';
         $this->email = $email;
         $this->is_public = false;
-        $this->is_2024 = $is_2024;
+        $this->system = $system;
+        $this->is_2024 = ($system === 'dnd5e_2024');
         $this->save();
     }
 
@@ -32,6 +33,7 @@ class Sheet extends \DB\SQL\Mapper {
             'name' => $this->name,
             'data' => json_decode( $this->data, true ),
             'is_public' => $this->exists( 'is_public' ) ? (bool) $this->get( 'is_public' ) : false,
+            'system' => $this->exists( 'system' ) ? $this->get( 'system' ) : ($this->get('is_2024') ? 'dnd5e_2024' : 'dnd5e_2014'),
             'is_2024' => $this->exists( 'is_2024' ) ? (bool) $this->get( 'is_2024' ) : true,
             'email' => $this->email
         ];
@@ -46,6 +48,7 @@ class Sheet extends \DB\SQL\Mapper {
             'name' => $this->name,
             'data' => json_decode( $this->data, true ),
             'is_public' => $this->exists( 'is_public' ) ? (bool) $this->get( 'is_public' ) : false,
+            'system' => $this->exists( 'system' ) ? $this->get( 'system' ) : ($this->get('is_2024') ? 'dnd5e_2024' : 'dnd5e_2014'),
             'is_2024' => $this->exists( 'is_2024' ) ? (bool) $this->get( 'is_2024' ) : true,
             'email' => $this->email
         ];
@@ -63,6 +66,7 @@ class Sheet extends \DB\SQL\Mapper {
                 'name' => $this->name,
                 'data' => json_encode( $this->data, true ),
                 'is_public' => $this->exists( 'is_public' ) ? (bool) $this->get( 'is_public' ) : false,
+                'system' => $this->exists( 'system' ) ? $this->get( 'system' ) : ($this->get('is_2024') ? 'dnd5e_2024' : 'dnd5e_2014'),
                 'is_2024' => $this->exists( 'is_2024' ) ? (bool) $this->get( 'is_2024' ) : true,
                 'email' => $this->email
             ];

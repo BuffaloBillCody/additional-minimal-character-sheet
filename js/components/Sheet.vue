@@ -8,74 +8,12 @@
       :retry-count="retryCount"
       :retry-max="retryMax"
       :view="view"
+      :system="system"
       @manual-save="manualSave"
       @update-view="view = $event"
     ></tabs>
 
-    <bio></bio>
-
-    <div class="page" v-show="view === 'main'">
-      <proficiency></proficiency>
-
-      <abilities></abilities>
-
-      <skills></skills>
-
-      <attacks></attacks>
-
-      <text-section
-        title="Features & Traits"
-        field="featuresText"
-        :read-only="readOnly"
-      ></text-section>
-
-      <equipment></equipment>
-
-      <text-section
-        title="Other Proficiencies & Languages"
-        field="proficienciesText"
-        :read-only="readOnly"
-      ></text-section>
-    </div>
-
-    <div class="page" v-show="view === 'spells'">
-      <spells></spells>
-    </div>
-
-    <div class="page" v-show="view === 'details'">
-      <text-section
-        title="Traits, Ideals, Bonds, & Flaws"
-        field="personalityText"
-        :read-only="readOnly"
-        v-if="!is_2024"
-      ></text-section>
-
-      <text-section
-        title="Appearance & Backstory"
-        field="backstoryText"
-        :read-only="readOnly"
-      ></text-section>
-
-      <text-section
-        title="Treasure"
-        field="treasureText"
-        :read-only="readOnly"
-      ></text-section>
-
-      <text-section
-        title="Allies & Organizations"
-        field="organizationsText"
-        :read-only="readOnly"
-      ></text-section>
-    </div>
-
-    <div class="page" v-show="view === 'notes'">
-      <text-section
-        title="Notes"
-        field="notesText"
-        :read-only="readOnly"
-      ></text-section>
-    </div>
+    <component :is="layoutComponent" :view="view"></component>
   </div>
 </template>
 
@@ -83,15 +21,11 @@
 import { Notyf } from 'notyf';
 import { mapState } from 'vuex';
 import { throttle } from '../utils';
-import Abilities from './Abilities';
-import Attacks from './Attacks';
-import Bio from './Bio';
-import Equipment from './Equipment';
-import Proficiency from './Proficiency';
-import Skills from './Skills';
-import Spells from './Spells';
 import Tabs from './Tabs';
-import TextSection from './TextSection';
+import Dnd5eLayout from './systems/dnd5e/Dnd5eLayout';
+import CustomLayout from './systems/custom/CustomLayout';
+import SwnLayout from './systems/swn/SwnLayout';
+import WwnLayout from './systems/wwn/WwnLayout';
 
 export default {
   name: 'Sheet',
@@ -112,7 +46,22 @@ export default {
   },
 
   computed: {
-    ...mapState(['is_2024', 'readOnly']),
+    ...mapState(['is_2024', 'readOnly', 'system']),
+    layoutComponent() {
+      if (this.system && this.system.startsWith('dnd5e')) {
+        return 'dnd5e-layout';
+      }
+      if (this.system === 'swn') {
+        return 'swn-layout';
+      }
+      if (this.system === 'wwn') {
+        return 'wwn-layout';
+      }
+      if (this.system === 'custom') {
+        return 'custom-layout';
+      }
+      return 'dnd5e-layout'; // Default fallback
+    }
   },
 
   watch: {
@@ -344,7 +293,7 @@ export default {
     // Get the current view from URL hash
     getViewFromHash() {
       const hash = window.location.hash.substring(1); // Remove the # symbol
-      const validViews = ['main', 'spells', 'details', 'notes'];
+      const validViews = ['main', 'spells', 'abilities', 'inventory', 'details', 'notes'];
       return validViews.includes(hash) ? hash : 'main';
     },
 
@@ -359,14 +308,10 @@ export default {
 
   components: {
     tabs: Tabs,
-    bio: Bio,
-    abilities: Abilities,
-    skills: Skills,
-    proficiency: Proficiency,
-    attacks: Attacks,
-    equipment: Equipment,
-    spells: Spells,
-    'text-section': TextSection,
+    'dnd5e-layout': Dnd5eLayout,
+    'custom-layout': CustomLayout,
+    'swn-layout': SwnLayout,
+    'wwn-layout': WwnLayout,
   },
 
   mounted() {

@@ -7,17 +7,8 @@
           <span class="sr-only">Dashboard</span>
         </a>
       </li>
-      <li :class="{ active: view === 'main' }">
-        <button @click="updateView('main')">Main</button>
-      </li>
-      <li :class="{ active: view === 'spells' }">
-        <button @click="updateView('spells')">Spells</button>
-      </li>
-      <li :class="{ active: view === 'details' }">
-        <button @click="updateView('details')">Details</button>
-      </li>
-      <li :class="{ active: view === 'notes' }">
-        <button @click="updateView('notes')">Notes</button>
+      <li v-for="tab in availableTabs" :key="tab.id" :class="{ active: view === tab.id }">
+        <button @click="updateView(tab.id)">{{ tab.label }}</button>
       </li>
 
       <li class="save-indicator" v-if="!readOnly">
@@ -50,11 +41,6 @@
           <div class="retry-text">Retry {{ retryCount }}/{{ retryMax }}</div>
         </div>
       </li>
-      <!-- <li class="delete-character-button" v-if="!readOnly">
-        <button @click="deleteCharacter">
-          <img src="/images/trash-alt.svg" alt="Delete character" />
-        </button>
-      </li> -->
     </ul>
   </nav>
 </template>
@@ -73,10 +59,38 @@ export default {
     'retryMax',
     'retryCount',
     'view',
+    'system',
   ],
 
   computed: {
     ...mapState(['readOnly']),
+
+    isDnd() {
+      return this.system && this.system.startsWith('dnd5e');
+    },
+
+    availableTabs() {
+      if (this.system === 'swn' || this.system === 'wwn') {
+        return [
+          { id: 'main', label: 'Main' },
+          { id: 'abilities', label: 'Abilities' },
+          { id: 'inventory', label: 'Inventory' },
+          { id: 'details', label: 'Details' },
+          { id: 'notes', label: 'Notes' },
+        ];
+      }
+      if (this.isDnd) {
+        return [
+          { id: 'main', label: 'Main' },
+          { id: 'spells', label: 'Spells' },
+          { id: 'details', label: 'Details' },
+          { id: 'notes', label: 'Notes' },
+        ];
+      }
+      return [
+        { id: 'main', label: 'Main' },
+      ];
+    },
 
     sheetSlug() {
       return this.$store.state.slug;
@@ -144,25 +158,6 @@ export default {
     manualSave() {
       this.$emit('manual-save');
     },
-
-    // deleteCharacter() {
-    //   var csrf = document.querySelector('#csrf').value;
-    //   var areYouSure = confirm(
-    //     'Are you sure you want to *permanantly* delete this character sheet?',
-    //   );
-    //   if (!areYouSure) return;
-
-    //   fetch(`/sheet/${this.sheetSlug}`, {
-    //     method: 'delete',
-    //     headers: {
-    //       'X-Ajax-Csrf': csrf,
-    //     },
-    //   })
-    //     .then((r) => r.json())
-    //     .then((r) => {
-    //       window.location = '/dashboard';
-    //     });
-    // },
   },
 
   watch: {
